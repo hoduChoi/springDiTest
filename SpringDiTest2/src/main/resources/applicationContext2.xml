@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 
+ <!-- Study/DiCats, Study.DiCats 클래스를 dicat라는 id를 지정해서 객체(bean) 생성  -->
+ <!-- 이 객체(bean)의 이름은 dicats입니다.
+ 	  dicats는 Study패키지에 있는 DiCats 클래스를 말합니다라고 선언 -->
+<!-- 외부에서 객체 생성 후 사용할 객체에 주입 시켜주어 사용. -->
+<bean id="myCats" class="com.di.ex2.MyCats">
+	<constructor-arg><!-- 생성자를 이용 -->
+		<value>나비</value>
+	</constructor-arg>
+	<constructor-arg><!-- 생성자를 이용 -->
+		<value>2</value>
+	</constructor-arg>
+	<constructor-arg><!-- 생성자를 이용 -->
+		<list>
+			<value>애교</value>
+			<value>꾹꾹이</value>
+			<value>잠자기</value>
+		</list>		
+	</constructor-arg>
+</bean>
+<!-- 두번째 고양이 -->
+<bean id="myCats2" class="com.di.ex2.MyCats">
+	<constructor-arg><!-- 생성자를 이용 -->
+		<value>호랑이</value>
+	</constructor-arg>
+	<constructor-arg><!-- 생성자를 이용 -->
+		<value>1</value>
+	</constructor-arg>
+	<constructor-arg><!-- 생성자를 이용 -->
+		<list>
+			<value>우다다</value>
+			<value>박치기</value>
+			<value>잠자기</value>
+		</list>		
+	</constructor-arg>
+</bean>
+
+<bean id="catsInfo" class="com.di.ex2.Cats">
+	<constructor-arg>
+	<!-- 위에서 만든 객체 참조하겠다 -->
+		<ref bean="myCats" />
+	</constructor-arg>
+</bean>
+</beans>

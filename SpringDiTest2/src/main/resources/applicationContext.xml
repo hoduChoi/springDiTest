@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 
+ <!-- Study/DiCats, Study.DiCats 클래스를 dicat라는 id를 지정해서 객체(bean) 생성  -->
+ <!-- 이 객체(bean)의 이름은 dicats입니다.
+ 	  dicats는 Study패키지에 있는 DiCats 클래스를 말합니다라고 선언 -->
+<!-- 외부에서 객체 생성 후 사용할 객체에 주입 시켜주어 사용. -->
+<bean id="cats" class="com.di.ex.Cats" />
+<bean id="myCats" class="com.di.ex.MyCats">
+	<!-- myCats클래스에 있는 필드들의 값을 설정 -->
+	<property name="cats">
+		<ref bean="cats"/> <!-- 이 property는 위에서 생성한 bean객체인 dicats를 참조 -->
+	</property>
+	<!-- MyCats의 필드의 이름과 값을 설정 -->
+	<property name="firstCatName" value="순덕222"/>
+	<property name="firstCatAge" value="12"/>
+	<property name="secondCatName" value="나비"/>
+	<property name="secondCatAge" value="2"/>
+</bean>
+</beans>
